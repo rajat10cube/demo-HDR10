@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spatiotemporal</title>
+</head>
+
+<body>
+    <p style="font-size: large; font-weight: bold" id="message3"></p>
+    <video id="output-video" controls autoplay loop></video>
+    <h3><span id="message1"></span></h3>
+    <script src="https://cdn.jsdelivr.net/npm/remote-calibrator@latest"></script>
+    <script>
+        const message3 = document.getElementById("message3");
+        const video = document.getElementById("output-video");
+
+
+        const isHVC1Supported = MediaSource.isTypeSupported(
+            'video/mp4; codecs="hvc1"'
+        );
+        const isAVC1Supported = MediaSource.isTypeSupported(
+            'video/mp4; codecs="avc1.6e0033"'
+        );
+        RemoteCalibrator.init({ id: "session_022" });
+        message3.innerHTML =
+            " Browser detected: " + RemoteCalibrator.browser.value;
+        if (isHVC1Supported == true) {
+            video.src = "safari linear spatiotemporal.mp4";
+        }
+        else if (isAVC1Supported == true) {
+            video.src = "chrome linear spatiotemporal.mp4";
+        }
+        else {
+            message1.innerHTML =
+                "Both hvc1 codec and avc1.6e0033 codec are not supported by your browser. Please use CHROME or SAFARI ";
+        }
+    </script>
+</body>
+
+</html>
