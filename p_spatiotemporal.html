@@ -10,8 +10,7 @@
 
 <body>
     <div>
-        <video width="1692px" height="3008px" id="spatiotemporal-video" controls autoplay loop playsinline
-            style="pointer-events: none;"></video>
+        <video id="spatiotemporal-video" controls autoplay loop playsinline style="pointer-events: none;"></video>
 
     </div>
     <h3><span id="message1"></span></h3>
@@ -20,8 +19,6 @@
     <script>
         const message1 = document.getElementById("message3");
         const spatiotemporal_video = document.getElementById("spatiotemporal-video");
-
-
 
         const isHVC1Supported = MediaSource.isTypeSupported(
             'video/mp4; codecs="hvc1"'
